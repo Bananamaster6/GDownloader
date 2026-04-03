@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GRAB Level Downloader</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <div class="bg-grid"></div>
+  <div class="bg-glow"></div>
+
+  <header>
+    <div class="logo">
+      <span class="logo-icon">◈</span>
+      <span class="logo-text">GRAB<em>levels</em></span>
+    </div>
+    <nav>
+      <a href="https://grabvr.quest" target="_blank" rel="noopener">GrabVR</a>
+      <a href="https://github.com" target="_blank" rel="noopener" id="github-link">GitHub</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-badge">GRAB VR · Level Downloader</div>
+      <h1>Download<br /><span class="accent">GRAB Levels</span><br />Instantly</h1>
+      <p class="hero-sub">Paste a level URL from <strong>grabvr.quest</strong> and download the raw level file with one click.</p>
+    </section>
+
+    <section class="downloader-card" id="downloader">
+      <div class="card-label">LEVEL URL</div>
+      <div class="input-row">
+        <div class="input-wrap">
+          <span class="input-prefix">⬡</span>
+          <input
+            type="text"
+            id="level-url"
+            placeholder="https://grabvr.quest/levels/viewer/?level=userid:levelid"
+            autocomplete="off"
+            spellcheck="false"
+          />
+          <button class="clear-btn" id="clear-btn" title="Clear" aria-label="Clear input">✕</button>
+        </div>
+        <button class="download-btn" id="download-btn">
+          <span class="btn-icon">↓</span>
+          <span class="btn-text">Download</span>
+        </button>
+      </div>
+
+      <div class="status-area" id="status-area" aria-live="polite"></div>
+
+      <div class="level-preview" id="level-preview" hidden>
+        <div class="preview-header">
+          <span class="preview-tag">PARSED LEVEL</span>
+          <span class="preview-loading" id="preview-loading" hidden>
+            <span class="spinner spinner-sm"></span> Loading…
+          </span>
+        </div>
+
+        <!-- Thumbnail + title row -->
+        <div class="preview-hero" id="preview-hero" hidden>
+          <div class="preview-thumb-wrap">
+            <img class="preview-thumb" id="preview-thumb" src="" alt="Level thumbnail" />
+            <div class="preview-thumb-overlay"></div>
+          </div>
+          <div class="preview-meta">
+            <div class="preview-title" id="preview-title">—</div>
+            <div class="preview-creator">
+              <span class="preview-label">by</span>
+              <span class="preview-creator-name" id="preview-creator">—</span>
+            </div>
+            <div class="preview-tags" id="preview-tags"></div>
+          </div>
+        </div>
+
+        <div class="preview-grid">
+          <div class="preview-item">
+            <span class="preview-label">User ID</span>
+            <span class="preview-value" id="preview-userid">—</span>
+          </div>
+          <div class="preview-item">
+            <span class="preview-label">Level ID</span>
+            <span class="preview-value" id="preview-levelid">—</span>
+          </div>
+          <div class="preview-item">
+            <span class="preview-label">API Endpoint</span>
+            <span class="preview-value mono" id="preview-api">—</span>
+          </div>
+        </div>
+        <button class="confirm-download-btn" id="confirm-download-btn">
+          <span>Download Level File</span>
+          <span class="btn-arrow">→</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="how-it-works">
+      <div class="how-title">HOW IT WORKS</div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div class="step-text">Copy a level URL from <span class="mono">grabvr.quest/levels</span></div>
+        </div>
+        <div class="step-divider">—</div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div class="step-text">Paste it into the field above and click <strong>Download</strong></div>
+        </div>
+        <div class="step-divider">—</div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div class="step-text">Your level file downloads directly to your device</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="url-format">
+      <div class="format-label">EXPECTED URL FORMAT</div>
+      <div class="format-block">
+        <span class="mono">https://grabvr.quest/levels/viewer/?level=</span><span class="mono accent">&lt;userid&gt;</span><span class="mono">:</span><span class="mono accent2">&lt;levelid&gt;</span>
+      </div>
+      <div class="format-example">
+        <span class="format-eg-label">Example:</span>
+        <span class="mono dim">https://grabvr.quest/levels/viewer/?level=abc123:xyz789</span>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>GRAB Level Downloader · Not affiliated with GrabVR</span>
+    <a href="https://grabvr.quest" target="_blank" rel="noopener">grabvr.quest ↗</a>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
