@@ -18,8 +18,8 @@ const confirmBtn     = document.getElementById('confirm-download-btn');
 let parsedLevel = null; // { userId, levelId }
 
 // ── GRAB API base ─────────────────────────────────────────────
-// The public level JSON endpoint used by grabvr.quest
-const API_BASE = 'https://grabvr.quest/levels';
+// The official GRAB backend API used by grabvr.quest
+const API_BASE = 'https://api.slin.dev/grab/v1';
 
 // ── Helpers ───────────────────────────────────────────────────
 
@@ -62,11 +62,11 @@ function parseLevelUrl(raw) {
 
 /**
  * Build the API URL for a given level.
- * grabvr.quest serves level JSON at:
- *   https://grabvr.quest/levels/[userid]/[levelid]
+ * The GRAB backend serves raw .level (protobuf) files at:
+ *   https://api.slin.dev/grab/v1/get_level/<userid>/<levelid>
  */
 function buildApiUrl(userId, levelId) {
-  return `${API_BASE}/${encodeURIComponent(userId)}/${encodeURIComponent(levelId)}`;
+  return `${API_BASE}/get_level/${encodeURIComponent(userId)}/${encodeURIComponent(levelId)}`;
 }
 
 /** Display a status message in the status area */
